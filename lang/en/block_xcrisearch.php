@@ -6,7 +6,7 @@
  * Time: 3:43 PM
  * To change this template use File | Settings | File Templates.
  */
-
+$string['teststring']       = 'test string';
 $string['pluginname']       = 'Course Recommender';
 $string['coursesearch']     = 'Course Search';
 $string['searchterm']       = 'Search Term';
