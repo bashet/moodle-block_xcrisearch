@@ -1,0 +1,28 @@
+.hidedetail	{
+    visibility:hidden;
+    /*display:none;*/
+}
+
+.showdetail	{
+    visibility:visible;
+    /*display:'';*/
+}
+
+.minus	{
+    background-image:url('/pix/t/expanded.gif');
+}
+
+.plus	{
+    background-image:url('/pix/t/collapsed.gif');
+}
+
+
+.xcrisearch .coursedetails label {
+
+    font-weight: bold;
+
+}
+
+.xcrisearch .coursedetails span {
+    margin-left: 10px;
+}

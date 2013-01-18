@@ -1,0 +1,83 @@
+<?php
+
+$jsmodule = array(
+'name'     	=> 'xcrisearch_standard_functions',
+'fullpath' 	=> '/blocks/xcrisearch/views/js/lib.js',
+'requires'  	=> array('yahoo','event','dom','element','connection')
+);
+
+$PAGE->requires->js_init_call('M.xcrisearch_standard_functions.init', null, true, $jsmodule);
+
+echo $OUTPUT->header();
+?>
+<div class="xcrisearch">
+    <?php
+    echo $OUTPUT->heading(get_string('pagetitle','block_xcrisearch'));
+    ?>
+    <div>
+    <?php
+    //render the form
+    $mform->display();
+    ?>
+    </div>
+    <div>
+        <?php
+            if (!empty($courses))   {
+                //    $flextable->print_html();
+        ?>
+        <table>
+            <tr>
+                <th>&nbsp;</th>
+                <th><?php echo get_string('title','block_xcrisearch'); ?></th>
+                <th><?php echo get_string('subject','block_xcrisearch'); ?></th>
+                <th><?php echo get_string('identifier','block_xcrisearch'); ?></th>
+                <th>&nbsp;</th>
+            </tr>
+            <?php for($i=$startrecord;$i < $endrecord; $i++)   {
+                if (!empty($courses[$i]))   {?>
+            <tr>
+                <td ><a href="#" class="changebutton plus" accesskey="" id="courserow<?php echo $i ?>" >change</a></td>
+                <td><?php echo $courses[$i]->title; ?></td>
+                <td><?php echo $courses[$i]->subject; ?></td>
+                <td><?php echo $courses[$i]->identifier; ?></td>
+                <td><a href="<?php echo $CFG->wwwroot; ?>/blocks/xcrisearch/actions/viewcourse.php?page=<?php $pagenum; ?>&course_id=<?php echo $course_id?>&searchterm=<?php echo $searchterm; ?>&id=<?php echo $courses[$i]->identifier;?>&title=<?php echo urlencode($courses[$i]->title);?>"><?php echo get_string('view','block_xcrisearch'); ?></a></td>
+            </tr>
+            <tr id="courserow<?php echo $i ?>_details" >
+                <td>&nbsp;</td>
+                <td colspan="3"><?php echo (!empty($courses[$i]->abstract)) ? $courses[$i]->abstract : $courses[$i]->description; ?></td>
+                <td>&nbsp;</td>
+            </tr>
+            <?php
+             }
+            } ?>
+        </table>
+
+
+        <?php
+            }   else if (!empty($search_carried_out))  {
+                echo get_string('noresultsfound','block_xcrisearch');
+            }
+        ?>
+    </div>
+    <?php
+        if ($pagenum > 0) {
+            $prevpagenum = $pagenum-1
+    ?>
+    <a href='<?php echo $CFG->wwwroot."/blocks/xcrisearch/actions/searchpage.php?course_id={$course_id}&pagenum={$prevpagenum}&searchterm={$searchterm}"; ?>'><?php echo get_string('previous','block_xcrisearch'); ?></a>
+    <?php
+        }
+    ?>
+
+    <?php
+        if ($pagenum < $pages-1 ) {
+            $nextpagenum = $pagenum+1;
+    ?>
+    <a href='<?php echo $CFG->wwwroot."/blocks/xcrisearch/actions/searchpage.php?course_id={$course_id}&pagenum={$nextpagenum}&searchterm={$searchterm}"; ?>'><?php echo get_string('next','block_xcrisearch'); ?></a>
+    <?php
+        }
+    ?>
+
+</div>
+<?php
+echo $OUTPUT->footer();
+?>

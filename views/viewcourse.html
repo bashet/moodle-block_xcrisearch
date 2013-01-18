@@ -1,0 +1,36 @@
+<?php
+echo $OUTPUT->header();
+?>
+<div class="xcrisearch">
+    <?php
+    echo $OUTPUT->heading(get_string('coursdetails','block_xcrisearch'));
+
+    if (!empty($viewcourse)) {
+    ?>
+    <div class="coursedetails">
+        <label><?php echo get_string('title','block_xcrisearch');?>:</label><span><?php echo $viewcourse->title;?></span><br /><br />
+        <label><?php echo get_string('subject','block_xcrisearch');?>:</label><span><?php echo $viewcourse->subject;?></span><br /><br />
+        <label><?php echo get_string('identifier','block_xcrisearch');?>:</label><span><?php echo $viewcourse->identifier;?></span><br /><br />
+        <br />
+        <p><?php echo $viewcourse->description;?></p>
+        <br />
+        <label><?php echo get_string('assessment','block_xcrisearch');?>:</label><span><?php echo $viewcourse->assessment;?></span><br /><br />
+        <label><?php echo get_string('learningoutcome','block_xcrisearch');?>:</label><span><?php echo $viewcourse->learningoutcome;?></span><br /><br />
+        <label><?php echo get_string('prerequisite','block_xcrisearch');?>:</label><span><?php echo $viewcourse->prerequisite;?></span><br /><br />
+        <label><?php echo get_string('qualtitle','block_xcrisearch');?>:</label><span><?php echo $viewcourse->qualtitle;?></span><br /><br />
+        <label><?php echo get_string('qualawardedby','block_xcrisearch');?>:</label><span><?php echo $viewcourse->qualawardedby;?></span><br /><br />
+        <label><?php echo get_string('creditscheme','block_xcrisearch');?>:</label><span><?php echo $viewcourse->creditscheme;?></span><br /><br />
+        <label><?php echo get_string('creditlevel','block_xcrisearch');?>:</label><span><?php echo $viewcourse->creditlevel;?></span><br /><br />
+        <label><?php echo get_string('creditvalue','block_xcrisearch');?>:</label><span><?php echo $viewcourse->creditvalue;?></span><br /><br />
+        <label><?php echo get_string('presentationstart','block_xcrisearch');?>:</label><span><?php echo $viewcourse->presentationstart;?></span><br /><br />
+        <label><?php echo get_string('presentationapplyto','block_xcrisearch');?>:</label><span><?php echo $viewcourse->presentationapplyto;?></span><br /><br />
+        <label><?php echo get_string('presentationstudymode','block_xcrisearch');?>:</label><span><?php echo $viewcourse->presentationstudymode;?></span><br /><br />
+        <label><?php echo get_string('presentationattendancemode','block_xcrisearch');?>:</label><span><?php echo $viewcourse->presentationattendancemode;?></span><br /><br />
+        <label><?php echo get_string('presentationattendancepattern','block_xcrisearch');?>:</label><span><?php echo $viewcourse->presentationattendancepattern;?></span><br /><br />
+    </div>
+    <?php }
+    ?>
+</div>
+<?php
+echo $OUTPUT->footer();
+?>
