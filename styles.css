@@ -1,11 +1,11 @@
 .hidedetail	{
     visibility:hidden;
-    /*display:none;*/
+    display:none;
 }
 
 .showdetail	{
     visibility:visible;
-    /*display:'';*/
+    display:'';
 }
 
 .minus	{
