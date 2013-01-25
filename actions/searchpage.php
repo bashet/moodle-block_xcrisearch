@@ -30,7 +30,7 @@ $searchterm     =   optional_param('searchterm','',PARAM_ALPHANUM);
 $course         =   $DB->get_record('course',array('id'=>$course_id));
 $site           =   $DB->get_record('course',array('id'=>SITEID));
 
-$resultsperpage =   5;
+$resultsperpage =   50;
 $search_carried_out      =  false;
 $pages          =   0;
 
@@ -42,7 +42,7 @@ $PAGE->navbar->add(get_string('coursesearch','block_xcrisearch'),null,'title');
 
 
 
-$PAGE->set_title($site->fullname." : ".get_string('pluginname','block_lpr'));
+$PAGE->set_title($site->fullname." : ".get_string('pluginname','block_xcrisearch'));
 $PAGE->set_heading($site->fullname);
 $PAGE->set_pagetype('xcrisearch');
 $PAGE->set_url($CFG->wwwroot."/blocks/xcrisearch/actions/searchpage.php",array('course_id'=>$course_id));
@@ -66,10 +66,15 @@ $currentcourseslevel    =   0;
          if (!empty($currentcourses))    {
              $xcourse   = array_pop($currentcourses);
              $currentcourseslevel   =   (!empty($xcourse->creditlevel)) ?   $xcourse->creditlevel : $currentcourseslevel;
+             
          }
      }
  }
+
+
 $mform  =   new search_mform($course_id,$currentcourseslevel);
+
+
 
 if ($mform->is_cancelled()) {
     redirect($CFG->wwwroot . '/course/view.php?id='.$course_id);
@@ -99,6 +104,7 @@ if (!empty($searchterm))   {
 
     if (empty($courses)) {
         $courses    =   $searchform->searchTerm($searchterm,$currentcourseslevel,$resultsperpage);
+        //$courses    =   $searchform->searchTerm($searchterm,$resultsperpage);
     }
 }
 
