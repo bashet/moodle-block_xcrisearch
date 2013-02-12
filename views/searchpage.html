@@ -32,14 +32,9 @@ echo $OUTPUT->header();
             if (!empty($courses))   {
                 //    $flextable->print_html();
         ?>
-        <!--<div id="accordion">
-            <h3>Title >> Subject >> Identifier</h3>
-            <div></div>
-        </div>-->
+        <?php echo get_string('searchfound','block_xcrisearch');?>
         <!--<?php echo get_string('totalrecordquantity','block_xcrisearch').$endrecord;?>-->
         <div id="accordion">
-            <!--<h3><?php echo get_string('title','block_xcrisearch'); ?> <?php echo get_string('subject','block_xcrisearch'); ?> <?php echo get_string('identifier','block_xcrisearch'); ?></h3>
-            <div></div>-->
             <?php for($i=$startrecord;$i < $endrecord; $i++)   {
                 if (!empty($courses[$i]))   {?>
             <h5>
@@ -53,7 +48,6 @@ echo $OUTPUT->header();
                 <p></p>
                 <?php $viewButton = "<input type='button' value='View Details' name='view'>"; ?>
                 <a href="<?php echo $CFG->wwwroot; ?>/blocks/xcrisearch/actions/viewcourse.php?page=<?php $pagenum; ?>&course_id=<?php echo $course_id?>&searchterm=<?php echo $searchterm; ?>&id=<?php echo $courses[$i]->identifier;?>&title=<?php echo urlencode($courses[$i]->title);?>"><?php echo $viewButton; ?></a>
-                <!--<a href="<?php echo $CFG->wwwroot; ?>/blocks/xcrisearch/actions/viewcourse.php?page=<?php $pagenum; ?>&course_id=<?php echo $course_id?>&searchterm=<?php echo $searchterm; ?>&id=<?php echo $courses[$i]->identifier;?>&title=<?php echo urlencode($courses[$i]->title);?>"><?php echo get_string('view','block_xcrisearch'); ?></a>-->
             </div>
             <?php
                     }
@@ -65,7 +59,14 @@ echo $OUTPUT->header();
 
         <?php
             }   else if (!empty($search_carried_out))  {
-                echo get_string('noresultsfound','block_xcrisearch');
+                $search_results  = get_string('noresultsfound','block_xcrisearch');
+                $search_results .= '<br>';
+                $search_results .= '<a href="http://www.plymouthart.ac.uk/contact.php#.URoNfaW6fng" target="_blank">';
+                $search_results .= get_string('clickheretocontactus','block_xcrisearch');
+                $search_results .= '</a>';
+                $search_results .= '<br>';
+                $search_results .= get_string('websitelinkformorecourse','block_xcrisearch');
+                echo $search_results;
             }
         ?>
     </div>
