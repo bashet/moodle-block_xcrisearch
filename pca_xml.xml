@@ -1536,7 +1536,7 @@ This module builds upon the students previous achievements to culminate in a fin
 
 										<credit:scheme>The Open University</credit:scheme> <!-- the name of the credit scheme under which credits are awarded -->
 
-										<credit:level>4</credit:level> <!-- The point in a credit scheme or framework at which credits are awarded -->
+										<credit:level>5</credit:level> <!-- The point in a credit scheme or framework at which credits are awarded -->
 
 										<credit:value>120</credit:value> <!-- the number of credits awarded -->
 
@@ -1788,7 +1788,7 @@ This purpose of this module is to support the development of independent critica
 
 										<credit:scheme>The Open University</credit:scheme> <!-- the name of the credit scheme under which credits are awarded -->
 
-										<credit:level>4</credit:level> <!-- The point in a credit scheme or framework at which credits are awarded -->
+										<credit:level>5</credit:level> <!-- The point in a credit scheme or framework at which credits are awarded -->
 
 										<credit:value>120</credit:value> <!-- the number of credits awarded -->
 
@@ -3310,7 +3310,7 @@ This module builds upon the students previous achievements to culminate in a fin
 
 										<credit:scheme>The Open University</credit:scheme> <!-- the name of the credit scheme under which credits are awarded -->
 
-										<credit:level>4</credit:level> <!-- The point in a credit scheme or framework at which credits are awarded -->
+										<credit:level>6</credit:level> <!-- The point in a credit scheme or framework at which credits are awarded -->
 
 										<credit:value>120</credit:value> <!-- the number of credits awarded -->
 
@@ -3680,7 +3680,7 @@ This module concludes your journey to culminate in the final construction of a b
 
 										<credit:scheme>The Open University</credit:scheme> <!-- the name of the credit scheme under which credits are awarded -->
 
-										<credit:level>4</credit:level> <!-- The point in a credit scheme or framework at which credits are awarded -->
+										<credit:level>6</credit:level> <!-- The point in a credit scheme or framework at which credits are awarded -->
 
 										<credit:value>120</credit:value> <!-- the number of credits awarded -->
 
@@ -5498,7 +5498,7 @@ The course is suitable for practitioners across the spectrum of design and craft
 
 										<credit:scheme>The Open University</credit:scheme> <!-- the name of the credit scheme under which credits are awarded -->
 
-										<credit:level>4</credit:level> <!-- The point in a credit scheme or framework at which credits are awarded -->
+										<credit:level>7</credit:level> <!-- The point in a credit scheme or framework at which credits are awarded -->
 
 										<credit:value>120</credit:value> <!-- the number of credits awarded -->
 
@@ -5572,9 +5572,9 @@ We welcome applicants from backgrounds across contemporary and traditional craft
 
 									<dc:identifier xsi:type="courseDataProgramme:internalID">MAPH1G1314</dc:identifier> <!-- course code -->
 
-									<dc:subject>MA</dc:subject>	<!-- the topic of the course -->
+									<dc:subject>MA</dc:subject>	<!-- the topic of the course MA-->
 
-									<dc:title>Masters in Contemporary Craft</dc:title> <!-- name of the course -->
+									<dc:title>Masters in Contemporary Crafts</dc:title> <!-- name of the course -->
 
 									<mlo:url>http://www.plymouthart.ac.uk//artadvantage.php%3FpageID%3D51%26courseID%3D37%26misCourseCode%3DMAPH1G1314%26courseField%3Dcourse_info</mlo:url> <!-- URL for the course -->
 
@@ -5596,7 +5596,7 @@ We welcome applicants from backgrounds across contemporary and traditional craft
 
 										<dc:identifier xsi:type="courseDataProgramme:internalID">MAPH1G1314</dc:identifier> <!-- course code -->
 
-										<dc:title>Masters in Contemporary Craft</dc:title> <!-- qualification title awarded -->
+										<dc:title>Masters in Contemporary Crafts</dc:title> <!-- qualification title awarded -->
 
 										<awardedBy>The Open University</awardedBy> <!-- awarding body -->
 
@@ -5606,7 +5606,7 @@ We welcome applicants from backgrounds across contemporary and traditional craft
 
 										<credit:scheme>The Open University</credit:scheme> <!-- the name of the credit scheme under which credits are awarded -->
 
-										<credit:level>4</credit:level> <!-- The point in a credit scheme or framework at which credits are awarded -->
+										<credit:level>7</credit:level> <!-- The point in a credit scheme or framework at which credits are awarded -->
 
 										<credit:value>120</credit:value> <!-- the number of credits awarded -->
 

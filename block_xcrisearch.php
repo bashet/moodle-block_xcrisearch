@@ -27,7 +27,7 @@ class block_xcrisearch extends block_list  {
 
         //first lets get the moodle record for the current course
         $course =   $DB->get_record('course',array('id'=>$COURSE->id));
-
+        
         $noxcri   =   true;
 
         //if the current course is not empty
@@ -40,7 +40,7 @@ class block_xcrisearch extends block_list  {
                 $xcrisearch     =   new ulcc_xcrisearch;
                 //get the current courses xcri details as we will use this to search for
                 $currentcourses    =   $xcrisearch->searchCourseId($course->idnumber,false,1);
-
+                //print_r($currentcourses);
                 if (!empty($currentcourses))    {
 
                     $xcourse   = array_pop($currentcourses);
@@ -72,35 +72,37 @@ class block_xcrisearch extends block_list  {
                             $this->content->items[] = html_writer::tag('a',get_string('viewrecommendations','block_xcrisearch'), array('href' => $url));
                             $this->content->icons[] = "";
                         }
-
-
+                        $url    =   "{$CFG->wwwroot}/blocks/xcrisearch/actions/searchpage.php?course_id={$COURSE->id}";
+                        $this->content->items[] = get_string('alternativeaction','block_xcrisearch');
+                        $this->content->items[] = '<a href="'. $url .'">Course Searcher</a>';
+                        //$this->content->icons[] = "";
+                        //$link ='http://www.plymouthart.ac.uk/contact.php#.URoNfaW6fng';
+                        //$this->content->items[] = html_writer::tag('a',get_string('teamname','block_xcrisearch'), array('href' => $link, 'target'=>'_blank'));
+                        //$this->content->icons[] = "";
+                        $this->content->items[] = get_string('websitelinkformorecourse','block_xcrisearch');
                     }
-
-
-
                 }
-
+            }else {
+                $this->content->items[] = get_string('searchdescription','block_xcrisearch');
+                $this->content->icons[] = "";
+        
+                $label  =   get_string('searchterm','block_xcrisearch');
+                $url    =   "{$CFG->wwwroot}/blocks/xcrisearch/actions/searchpage.php?course_id={$COURSE->id}";
+                $this->content->items[] = html_writer::tag('a',get_string('searchforcourses','block_xcrisearch'), array('href' => "{$CFG->wwwroot}/blocks/xcrisearch/actions/searchpage.php?course_id={$COURSE->id}"));
+                $this->content->icons[] = "";
+        
+                
+                if (!empty($noxcri))    {
+        
+                    $this->content->items[] = get_string('norecommendedcourses','block_xcrisearch');
+                    $this->content->icons[] = "";
+                    $link ='http://www.plymouthart.ac.uk/contact.php#.URoNfaW6fng';
+                    $this->content->items[] = html_writer::tag('a',get_string('teamname','block_xcrisearch'), array('href' => $link, 'target'=>'_blank'));
+                    $this->content->icons[] = "";
+                    $this->content->items[] = get_string('websitelinkformorecourse','block_xcrisearch');
+                }
             }
         }
-
-        $this->content->items[] = get_string('searchdescription','block_xcrisearch');
-        $this->content->icons[] = "";
-
-        $label  =   get_string('searchterm','block_xcrisearch');
-        $url    =   "{$CFG->wwwroot}/blocks/xcrisearch/actions/searchpage.php?course_id={$COURSE->id}";
-        $this->content->items[] = html_writer::tag('a',get_string('searchforcourses','block_xcrisearch'), array('href' => "/blocks/xcrisearch/actions/searchpage.php?course_id={$COURSE->id}"));
-        $this->content->icons[] = "";
-
-
-        if (!empty($noxcri))    {
-
-            $this->content->items[] = get_string('norecommendedcourses','block_xcrisearch');
-            $this->content->icons[] = "";
-
-            $this->content->items[] = html_writer::tag('a',get_string('teamname','block_xcrisearch'), array('href' => '#'));
-            $this->content->icons[] = "";
-        }
-
         return $this->content;
     }
 

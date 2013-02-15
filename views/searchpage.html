@@ -7,7 +7,14 @@ $jsmodule = array(
 );
 
 $PAGE->requires->js_init_call('M.xcrisearch_standard_functions.init', null, true, $jsmodule);
-
+$csslink = new moodle_url($CFG->wwwroot.'/blocks/xcrisearch/css/redmond/jquery-ui-1.10.0.custom.css');
+$PAGE->requires->css($csslink);
+$js1 = new moodle_url($CFG->wwwroot.'/blocks/xcrisearch/js/jquery-1.9.0.js');
+$js2 = new moodle_url($CFG->wwwroot.'/blocks/xcrisearch/js/jquery-ui-1.10.0.custom.js');
+$jsFunction = new moodle_url($CFG->wwwroot.'/blocks/xcrisearch/js/function.js');
+$PAGE->requires->js($js1);
+$PAGE->requires->js($js2);
+$PAGE->requires->js($jsFunction);
 echo $OUTPUT->header();
 ?>
 <div class="xcrisearch">
@@ -25,37 +32,40 @@ echo $OUTPUT->header();
             if (!empty($courses))   {
                 //    $flextable->print_html();
         ?>
-        <table>
-            <tr>
-                <th>&nbsp;</th>
-                <th><?php echo get_string('title','block_xcrisearch'); ?></th>
-                <th><?php echo get_string('subject','block_xcrisearch'); ?></th>
-                <th><?php echo get_string('identifier','block_xcrisearch'); ?></th>
-                <th>&nbsp;</th>
-            </tr>
+        <?php echo get_string('searchfound','block_xcrisearch');?>
+        <!--<?php echo get_string('totalrecordquantity','block_xcrisearch').$endrecord;?>-->
+        <div id="accordion">
             <?php for($i=$startrecord;$i < $endrecord; $i++)   {
                 if (!empty($courses[$i]))   {?>
-            <tr>
-                <td ><a href="#" class="changebutton plus" accesskey="" id="courserow<?php echo $i ?>" >change</a></td>
-                <td><?php echo $courses[$i]->title; ?></td>
-                <td><?php echo $courses[$i]->subject; ?></td>
-                <td><?php echo $courses[$i]->identifier; ?></td>
-                <td><a href="<?php echo $CFG->wwwroot; ?>/blocks/xcrisearch/actions/viewcourse.php?page=<?php $pagenum; ?>&course_id=<?php echo $course_id?>&searchterm=<?php echo $searchterm; ?>&id=<?php echo $courses[$i]->identifier;?>&title=<?php echo urlencode($courses[$i]->title);?>"><?php echo get_string('view','block_xcrisearch'); ?></a></td>
-            </tr>
-            <tr id="courserow<?php echo $i ?>_details" >
-                <td>&nbsp;</td>
-                <td colspan="3"><?php echo (!empty($courses[$i]->abstract)) ? $courses[$i]->abstract : $courses[$i]->description; ?></td>
-                <td>&nbsp;</td>
-            </tr>
+            <h5>
+                <?php echo $i+1; ?> >>
+                <?php echo $courses[$i]->title; ?> >>
+                <?php echo $courses[$i]->subject; ?> >>
+                <?php echo $courses[$i]->identifier; ?> >>
+            </h5>
+            <div>
+                <?php echo (!empty($courses[$i]->abstract)) ? $courses[$i]->abstract : $courses[$i]->description; ?>
+                <p></p>
+                <?php $viewButton = "<input type='button' value='View Details' name='view'>"; ?>
+                <a href="<?php echo $CFG->wwwroot; ?>/blocks/xcrisearch/actions/viewcourse.php?page=<?php $pagenum; ?>&course_id=<?php echo $course_id?>&searchterm=<?php echo $searchterm; ?>&id=<?php echo $courses[$i]->identifier;?>&title=<?php echo urlencode($courses[$i]->title);?>"><?php echo $viewButton; ?></a>
+            </div>
             <?php
-             }
-            } ?>
-        </table>
+                    }
+                }
+            ?>
+           
+        </div>
 
 
         <?php
             }   else if (!empty($search_carried_out))  {
-                echo get_string('noresultsfound','block_xcrisearch');
+                $search_results  = get_string('noresultsfound','block_xcrisearch');
+                $search_results .= '<br>';
+                $search_results .= '<a href="http://www.plymouthart.ac.uk/contact.php#.URoNfaW6fng" target="_blank">';
+                $search_results .= get_string('clickheretocontactus','block_xcrisearch');
+                $search_results .= '</a>';
+                $search_results .= get_string('websitelinkformorecourse','block_xcrisearch');
+                echo $search_results;
             }
         ?>
     </div>
@@ -63,7 +73,7 @@ echo $OUTPUT->header();
         if ($pagenum > 0) {
             $prevpagenum = $pagenum-1
     ?>
-    <a href='<?php echo $CFG->wwwroot."/blocks/xcrisearch/actions/searchpage.php?course_id={$course_id}&pagenum={$prevpagenum}&searchterm={$searchterm}"; ?>'><?php echo get_string('previous','block_xcrisearch'); ?></a>
+    <!--<a href='<?php echo $CFG->wwwroot."/blocks/xcrisearch/actions/searchpage.php?course_id={$course_id}&pagenum={$prevpagenum}&searchterm={$searchterm}"; ?>'><?php echo get_string('previous','block_xcrisearch'); ?></a>-->
     <?php
         }
     ?>
@@ -72,7 +82,7 @@ echo $OUTPUT->header();
         if ($pagenum < $pages-1 ) {
             $nextpagenum = $pagenum+1;
     ?>
-    <a href='<?php echo $CFG->wwwroot."/blocks/xcrisearch/actions/searchpage.php?course_id={$course_id}&pagenum={$nextpagenum}&searchterm={$searchterm}"; ?>'><?php echo get_string('next','block_xcrisearch'); ?></a>
+    <!--<a href='<?php echo $CFG->wwwroot."/blocks/xcrisearch/actions/searchpage.php?course_id={$course_id}&pagenum={$nextpagenum}&searchterm={$searchterm}"; ?>'><?php echo get_string('next','block_xcrisearch'); ?></a>-->
     <?php
         }
     ?>
@@ -81,3 +91,4 @@ echo $OUTPUT->header();
 <?php
 echo $OUTPUT->footer();
 ?>
+

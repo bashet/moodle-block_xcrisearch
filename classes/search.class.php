@@ -28,7 +28,7 @@ class ulcc_xcrisearch    {
         return $this->search($courseid,'courseid',$resreturn,$level);
     }
 
-    function searchTerm($searchterm,$level=false,$resreturn=3) {
+    function searchTerm($searchterm,$level=false,$resreturn=0) { // was $resreturn=3
         return $this->search($searchterm,'term',$resreturn,$level);
     }
 
@@ -54,7 +54,12 @@ class ulcc_xcrisearch    {
         $doc = new DOMDocument();
         $fileloaded =   $doc->load($this->xmlfile);
         $courses   =   $doc->getElementsByTagName('course');
-
+        
+        /*foreach ($courses as $course){
+            print_r($course);
+            echo '<br>';
+        }
+        */
         $coursesfound   =   array();
 
         if (!empty($courses))   {
@@ -69,7 +74,7 @@ class ulcc_xcrisearch    {
                             if (empty($level)) {
                                 $coursesfound[] = $this->normaliseCourse($c);
                             } else {
-                                $tempcourse =   $this->normaliseCourse($c);
+                                $tempcourse =   $this->normaliseCourse($c); 
                                 if ($tempcourse->creditlevel > $level)  {
                                     $coursesfound[] =   $tempcourse;
                                 }
